@@ -23,18 +23,18 @@ def main():
     extracted_data_dir = './'
     model_path = "yolov8n.pt"
     yaml_file = "data.yaml" #associate this with your dataset
-    epochs = 1
+    epochs = 1 #change to how many you want
     sns_topic_arn = os.getenv('SNS_TOPIC_ARN', 'arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns')
     sns_message = "Training completed for YOLO model."
     results_zip_path = './runs.zip'
     s3_results_key = 'roofsegment.zip'
-    ec2_instance_id = os.getenv('EC2_INSTANCE_ID', 'your-ec2-instance-id')
+    # ec2_instance_id = os.getenv('EC2_INSTANCE_ID', 'your-ec2-instance-id')
 
     # Initialize handlers
     data_handler = S3DataHandler(bucket_name)
     trainer = YOLOTrainer(model_path, yaml_file, epochs, bucket_name)
     sns_instance = sns()
-    ec2_shutdown = Ec2Shutdown(instance_id=ec2_instance_id)
+    ec2_shutdown = Ec2Shutdown()
 
     try:
         logging.info("Step 1: Downloading data from S3...")
