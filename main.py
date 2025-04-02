@@ -54,9 +54,11 @@ def main():
         sns_instance.send_sns(topic_arn=sns_topic_arn, message=sns_message)
 
         logging.info("Step 7: Shutting down EC2 instance...")
+        logging.info("Process completed successfully, and EC2 instance is shutting down.")
+
+        #shutdown, any code after this will not be executed after shutdown command is called
         ec2_shutdown.shutdown()
 
-        logging.info("Process completed successfully, and EC2 instance is shutting down.")
 
     except Exception as e:
         logging.error(f"An error occurred: {e}", exc_info=True)
