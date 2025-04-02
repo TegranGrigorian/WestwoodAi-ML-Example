@@ -17,12 +17,12 @@ def configure_logging():
 
 def main():
     # Configuration
-    bucket_name = os.getenv('S3_BUCKET_NAME', 'train-object-detector-ec2-bucket')
-    data_in_path = os.getenv('S3_DATA_IN_PATH', "in/roofsegment.zip")
+    bucket_name = os.getenv('S3_BUCKET_NAME', 'train-object-detector-ec2-bucket') #TODO change you actually bucket name here or set it in your environment variables
+    data_in_path = os.getenv('S3_DATA_IN_PATH', "in/roofsegment.zip") #TODO these are examples please change to your actual S3 paths
     output_zip_file = 'data.zip'
     extracted_data_dir = './'
     model_path = "yolov8n.pt"
-    yaml_file = "data.yaml"
+    yaml_file = "data.yaml" #associate this with your dataset
     epochs = 1
     sns_topic_arn = os.getenv('SNS_TOPIC_ARN', 'arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns')
     sns_message = "Training completed for YOLO model."
