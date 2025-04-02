@@ -1,3 +1,4 @@
+import boto3
 class sns:
     def __init__(self, arnin ='arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns', 
                  message = 'Notification from SNS'):
