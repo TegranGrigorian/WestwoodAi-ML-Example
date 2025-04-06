@@ -1,13 +1,14 @@
 import boto3
+
 class sns:
-    def __init__(self, arnin ='arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns', 
-                 message = 'Notification from SNS'):
+    def __init__(self, arnin='arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns', 
+                 message='Notification from SNS'):
         """
         Initialize the sns class. This can be used to send notifications to SNS topics.
         """
-        self.send_sns = arnin
-        self.message = message
-        pass
+        self.default_arn = arnin  # Renamed from send_sns to default_arn
+        self.default_message = message  # Renamed from message
+
     def send_sns(self, topic_arn, message):
         """
         Send a notification to an SNS topic

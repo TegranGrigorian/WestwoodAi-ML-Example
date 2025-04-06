@@ -43,7 +43,7 @@ def main():
         data_handler.extract_zip(output_zip_file, extract_to=extracted_data_dir)
 
         logging.info("Step 3: Starting YOLO training...")
-        trainer.train_model()
+        trainer.train_model(sns_topic_arn=sns_topic_arn)
 
         logging.info("Step 4: Zipping training results...")
         trainer.zip_results(runs_dir='./runs', zip_path=results_zip_path)

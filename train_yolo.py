@@ -26,7 +26,7 @@ class YOLOTrainer:
             ]
         )
 
-    def train_model(self):
+    def train_model(self, sns_topic_arn):
         try:
             if not os.path.exists(self.yaml_file):
                 logging.error(f"YAML file '{self.yaml_file}' not found.")
@@ -37,11 +37,10 @@ class YOLOTrainer:
 
             logging.info(f"Starting training for {self.epochs} epochs using data file '{self.yaml_file}'...")
             model.train(data=self.yaml_file, epochs=self.epochs)
-            self.sns_instance.send_sns(topic_arn='arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns', 
-                                 message=f"Training completed for YOLO model.")
-            logging.info("Training completed successfully.")
 
-    
+            self.sns_instance.send_sns(topic_arn=sns_topic_arn, 
+                                       message=f"Training completed for YOLO model.")
+            logging.info("Training completed successfully.")
 
         except FileNotFoundError as e:
             logging.error(f"File error: {e}")
