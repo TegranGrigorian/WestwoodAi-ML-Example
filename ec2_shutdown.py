@@ -1,7 +1,7 @@
 import os
 
 class Ec2Shutdown:
-    def __init__(self, instance_id): #doesnt really need param
+    def __init__(self): #doesnt really need param
         pass
     def shutdown(self):
         """
