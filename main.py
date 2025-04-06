@@ -4,7 +4,7 @@ from data_manager import S3DataHandler
 from train_yolo import YOLOTrainer
 from sns import sns
 from ec2_shutdown import Ec2Shutdown
-
+os.chdir(os.path.dirname(os.path.abspath(__file__)))  # Sets CWD to the script's location
 def configure_logging():
     logging.basicConfig(
         level=logging.INFO,
@@ -16,7 +16,7 @@ def configure_logging():
     )
 
 def main():
-    # Configuration
+    #TODO Configuration
     bucket_name = os.getenv('S3_BUCKET_NAME', 'train-object-detector-ec2-bucket') #TODO change you actually bucket name here or set it in your environment variables
     data_in_path = os.getenv('S3_DATA_IN_PATH', "in/roofsegment.zip") #TODO these are examples please change to your actual S3 paths
     output_zip_file = 'data.zip'
