@@ -1,4 +1,5 @@
 import boto3
+import logging
 
 class sns:
     def __init__(self, arnin='arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns', 
@@ -18,8 +19,11 @@ class sns:
         """
         if topic_arn is None or message is None:
             raise ValueError("topic_arn and message cannot be None")
+        logging.info(f"Sending SNS message to topic: {topic_arn}")
+        logging.info(f"Message: {message}")
         sns_client = boto3.client('sns', region_name=self.region_name)  # Specify region_name
-        sns_client.publish(
+        response = sns_client.publish(
             TopicArn=topic_arn,
             Message=message
         )
+        logging.info(f"SNS publish response: {response}")

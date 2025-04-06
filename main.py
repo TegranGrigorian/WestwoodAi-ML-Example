@@ -24,7 +24,7 @@ def main():
     model_path = "yolov8n.pt"
     yaml_file = "data.yaml" #associate this with your dataset
     epochs = 1 #change to how many you want
-    sns_topic_arn = os.getenv('SNS_TOPIC_ARN', 'arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns')
+    sns_topic_arn = 'arn:aws:sns:us-east-2:354918395782:train-object-detector-ec2-sns:cc28e55d-bfd4-43d4-871d-2aa293ef3f58'
     sns_message = "Training completed for YOLO model."
     results_zip_path = './runs.zip'
     s3_results_key = 'roofsegment.zip'
